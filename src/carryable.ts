@@ -161,7 +161,6 @@ export class CarryableSystem {
         }
         
         // Temporarily unset the object on the grid so we can check free spots without worrying about its existing spot.
-        log('unset lastGrid from ' + carryable.id);
         this.grid.setBox(carryable.lastGrid, carryable.size, carryable.id, -1);
       }
       
@@ -173,7 +172,6 @@ export class CarryableSystem {
       
       // Check if any was returned (if entire line segment was outside scene, or stuff was entirely in the way, won't return anything.)
       if (closestGridPos) {
-        log('newset closestGridPos to ' + carryable.id);
         carryable.lastGrid = closestGridPos;
         this.grid.setBox(closestGridPos, carryable.size, -1, carryable.id);
         entity.getComponent(Transform).position = CarryableSystem.convertFromGrid(closestGridPos)
@@ -182,7 +180,6 @@ export class CarryableSystem {
       }
       else {
         // Reset the object on the grid, since we can't move it.
-        log('reset');
         this.grid.setBox(carryable.lastGrid, carryable.size, -1, carryable.id);
       }
     }
@@ -282,7 +279,7 @@ export class CarryableSystem {
   
   /**
    * Between the two float-valued positions, find the rounded (to nearest 0.5) position closet to pos1 for which grid is empty.
-   */
+   */        log('reset');
   public castCheck(p0: Vector3, p1: Vector3, dims: Vector3): Vector3 {
     let listOfPoints = this.bresenham3d(p0, p1);
     

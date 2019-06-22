@@ -39,7 +39,6 @@ export class BlockPile {
    */
   public spawnNewBlock() {
     
-    log('Creating new block...');
     let newBlock = new Entity();
     newBlock.addComponent(this.shape);
     newBlock.addComponent(new Transform({

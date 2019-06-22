@@ -82,9 +82,6 @@ export class Grid {
           if (this.cells[x][y][z] == oldFilled) {
             this.cells[x][y][z] = filled;
           }
-          else {
-            log('invalid unfill at ' + x + ', ' + y + ', ' + z + ', saw ' + this.cells[x][y][z] + ' but expected ' + oldFilled);
-          }
         }
       }
     }
