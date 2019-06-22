@@ -1,6 +1,8 @@
 import {Carryable} from 'carryable';
 
-
+/**
+ * Represents a non-moveable block that you can click to generate a moveable block.
+ */
 export class BlockPile {
   
   private shape: Shape;
@@ -10,6 +12,9 @@ export class BlockPile {
   
   private material: Material;
   
+  /**
+   * Create a new BlockPile with the given transform, dimensions (in units of 0.5m cubed grid cells), shape, and material.
+   */
   constructor(transf: Transform, dimensions: Vector3, shape: Shape, material: Material) {
     
     this.transf = transf;
@@ -29,6 +34,9 @@ export class BlockPile {
     engine.addEntity(this.fixedBlock);
   }
   
+  /**
+   * Create a new Carryable block with the same shape and color as this BlockPile.
+   */
   public spawnNewBlock() {
     
     log('Creating new block...');

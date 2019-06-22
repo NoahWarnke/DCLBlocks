@@ -1,7 +1,13 @@
 import {CarryableSystem} from 'carryable';
 
+/**
+ * Represents a board with colors you can pick for blocks. Also has buttons for block carry modes.
+ */
 export class ColorPicker {
   
+  /**
+   * The available colors.
+   */
   public colors: Color3[] = [
     Color3.Red(),
     new Color3(1.0, 0.5, 0.0), // Orange
@@ -83,6 +89,9 @@ export class ColorPicker {
     
   }
   
+  /**
+   * Create a single color patch at the given local coordinates.
+   */
   private createPatch(x: number, y: number) {
     let patch = new Entity();
     
