@@ -70,7 +70,6 @@ export class Carryable {
     // Save position of object relative to camera at moment of toggle.
     this.relativeTransform = new Transform({
       position: myTransform.position
-        .subtract(new Vector3(0, 2.42, 0)) // Eye altitude is at 1.7m, but cam pos gives -0.72...)
         .subtract(this.camera.position)
         .rotate(this.camera.rotation
           .conjugate()
@@ -129,7 +128,6 @@ export class CarryableSystem {
       
       // Camera position.
       let camPos = this.camera.position.clone();
-      camPos.y += 2.42; // Fix for borked eye height.
 
       // Current float position of object (should be rounded, but in world coords.)
       let oldPos = entity.getComponent(Transform).position.clone().add(carryable.centerToCornerOffset);
@@ -279,7 +277,7 @@ export class CarryableSystem {
   
   /**
    * Between the two float-valued positions, find the rounded (to nearest 0.5) position closet to pos1 for which grid is empty.
-   */        log('reset');
+   */
   public castCheck(p0: Vector3, p1: Vector3, dims: Vector3): Vector3 {
     let listOfPoints = this.bresenham3d(p0, p1);
     
